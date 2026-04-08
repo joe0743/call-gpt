@@ -33,14 +33,14 @@ const tools = [
     function: {
       name: 'checkPrice',
       say: 'Let me check the price, one moment.',
-      description: 'Check the price of given model of airpods, airpods pro or airpods max.',
+      description: 'Check the price of that.',
       parameters: {
         type: 'object',
         properties: {
           model: {
             type: 'string',
             'enum': ['airpods', 'airpods pro', 'airpods max'],
-            description: 'The model of airpods, either the airpods, airpods pro or airpods max',
+            description: 'The style',
           },
         },
         required: ['model'],
@@ -61,18 +61,18 @@ const tools = [
     function: {
       name: 'placeOrder',
       say: 'All right, I\'m just going to ring that up in our system.',
-      description: 'Places an order for a set of airpods.',
+      description: 'Places an order for.',
       parameters: {
         type: 'object',
         properties: {
           model: {
             type: 'string',
             'enum': ['airpods', 'airpods pro'],
-            description: 'The model of airpods, either the regular or pro',
+            description: 'The style of',
           },
           quantity: {
             type: 'integer',
-            description: 'The number of airpods they want to order',
+            description: 'The number of ',
           },
         },
         required: ['type', 'quantity'],
