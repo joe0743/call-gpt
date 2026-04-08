@@ -53,7 +53,7 @@ class GptService extends EventEmitter {
 
     // Step 1: Send user transcription to Chat GPT
     const stream = await this.openai.chat.completions.create({
-      model: 'gpt-4o-mini',
+      model: 'gpt-54-mini',
       messages: this.userContext,
       tools: tools,
       stream: true,
