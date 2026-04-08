@@ -19,6 +19,7 @@ const PORT = process.env.PORT || 3000;
 
 app.post('/incoming', (req, res) => {
   try {
+	const callerNumber = req.body.From;   // <-- THIS is the caller ID
     const response = new VoiceResponse();
     const connect = response.connect();
     connect.stream({ url: `wss://${process.env.SERVER}/connection` });
@@ -58,7 +59,7 @@ app.ws('/connection', (ws) => {
         // Set RECORDING_ENABLED='true' in .env to record calls
         recordingService(ttsService, callSid).then(() => {
           console.log(`Twilio -> Starting Media Stream for ${streamSid}`.underline.red);
-          ttsService.generate({partialResponseIndex: null, partialResponse: 'Hello! Thanks for calling Ricos pizza. What can I get for you today?'}, 0);
+          ttsService.generate({partialResponseIndex: null, partialResponse: 'Hello! Thanks for calling Ricos pizza. I see your number is ${callerNumber}. is that correct?'}, 0);
         });
       } else if (msg.event === 'media') {
         transcriptionService.send(msg.media.payload);
