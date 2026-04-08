@@ -21,7 +21,7 @@ app.post('/incoming', (req, res) => {
   try {
     const response = new VoiceResponse();
     const connect = response.connect();
-    connect.stream({ `wss://${process.env.SERVER}/connection` });
+    connect.stream({ url: `wss://${process.env.SERVER}/connection` });
   
     res.type('text/xml');
     res.end(response.toString());
