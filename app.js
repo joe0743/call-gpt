@@ -59,7 +59,7 @@ app.ws('/connection', (ws) => {
         // Set RECORDING_ENABLED='true' in .env to record calls
         recordingService(ttsService, callSid).then(() => {
           console.log(`Twilio -> Starting Media Stream for ${streamSid}`.underline.red);
-          ttsService.generate({partialResponseIndex: null, partialResponse: 'Hello! Thanks for calling Ricos pizza. What can I get for you?'}, 0);
+          ttsService.generate({partialResponseIndex: null, partialResponse: 'Hello! Thanks for calling the pizza shop. What can I get for you?'}, 0);
         });
       } else if (msg.event === 'media') {
         transcriptionService.send(msg.media.payload);
