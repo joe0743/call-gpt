@@ -119,6 +119,33 @@ const tools = [
       }
     },
   },
+  {
+    type: 'function',
+    function: {
+      name: 'endCall',
+      say: 'Thank you for your order. I will end the call now.',
+      description: 'Ends the active phone call after the order has been finalized and confirmed.',
+      parameters: {
+        type: 'object',
+        properties: {
+          callSid: {
+            type: 'string',
+            description: 'The unique identifier for the active phone call.',
+          },
+        },
+        required: ['callSid'],
+      },
+      returns: {
+        type: 'object',
+        properties: {
+          status: {
+            type: 'string',
+            description: 'Whether or not the customer call was successfully ended.'
+          },
+        }
+      }
+    },
+  },
 ];
 
 module.exports = tools;
