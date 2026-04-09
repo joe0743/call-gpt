@@ -1,0 +1,1 @@
+Check the current time (Pacific Standard) and compare to business hours: 9am to 9pm.  If outside of those hours, the business is closed. End the call with a short, neutral, polite closing and terminate the session cleanly.
