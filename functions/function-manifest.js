@@ -124,7 +124,7 @@ const tools = [
     function: {
       name: 'endCall',
       say: 'Thank you for your order. ',
-      description: 'Ends the active phone call after the order has been finalized and confirmed.',
+      description: 'Call again soon.',
       parameters: {
         type: 'object',
         properties: {
