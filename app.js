@@ -5,6 +5,7 @@ const express = require('express');
 const ExpressWs = require('express-ws');
 
 const { GptService } = require('./services/gpt-service');
+const { GroqService } = require('./services/groq-service');
 const { StreamService } = require('./services/stream-service');
 const { TranscriptionService } = require('./services/transcription-service');
 const { TextToSpeechService } = require('./services/tts-service');
@@ -16,6 +17,7 @@ const app = express();
 ExpressWs(app);
 
 const PORT = process.env.PORT || 3000;
+const LLM_PROVIDER = (process.env.LLM_PROVIDER || 'openai').toLowerCase();
 
 app.post('/incoming', (req, res) => {
   try {
@@ -38,7 +40,7 @@ app.ws('/connection', (ws) => {
     let streamSid;
     let callSid;
 
-    const gptService = new GptService();
+    const llmService = LLM_PROVIDER === 'groq' ? new GroqService() : new GptService();
     const streamService = new StreamService(ws);
     const transcriptionService = new TranscriptionService();
     const ttsService = new TextToSpeechService({});
@@ -54,7 +56,7 @@ app.ws('/connection', (ws) => {
         callSid = msg.start.callSid;
         
         streamService.setStreamSid(streamSid);
-        gptService.setCallSid(callSid);
+        llmService.setCallSid(callSid);
 
         // Set RECORDING_ENABLED='true' in .env to record calls
         recordingService(ttsService, callSid).then(() => {
@@ -88,11 +90,11 @@ app.ws('/connection', (ws) => {
     transcriptionService.on('transcription', async (text) => {
       if (!text) { return; }
       console.log(`Interaction ${interactionCount} – STT -> GPT: ${text}`.yellow);
-      gptService.completion(text, interactionCount);
+      llmService.completion(text, interactionCount);
       interactionCount += 1;
     });
     
-    gptService.on('gptreply', async (gptReply, icount) => {
+    llmService.on('gptreply', async (gptReply, icount) => {
       console.log(`Interaction ${icount}: GPT -> TTS: ${gptReply.partialResponse}`.green );
       ttsService.generate(gptReply, icount);
     });
@@ -113,3 +115,4 @@ app.ws('/connection', (ws) => {
 
 app.listen(PORT);
 console.log(`Server running on port ${PORT}`);
+console.log(`LLM provider: ${LLM_PROVIDER}`);
