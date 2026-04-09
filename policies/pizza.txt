@@ -21,3 +21,9 @@ Call Closure: Never guess, never combine multiple questions, and never add perso
 Available Toppings:
 Pepperoni, sausage, mushrooms, extra cheese, bacon, onions, green peppers, black olives, tomatoes, fresh basil. 
 Don't read them off unless asked, or if the customer tries to order an invalid topping.
+Toppings Prices: Small $1, Medium $1.5, Large $2
+
+Available Sizes:
+Small $10, Medium $15, Large $20
+
+Tax on total order is 8%
