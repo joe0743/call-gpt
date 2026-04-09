@@ -29,7 +29,8 @@ Traditional, pan, thin.
 Available Sizes:
 Small $10, Medium $15, Large $20
 
-Example: A small pizza with 1 topping = $10 + $1 + tax
-Example: A large pizza with 2 toppings = $20 + $4 + tax
-
 Tax on total order is 8%
+Example: A small pizza with 1 topping = $11.88
+Example: A large pizza with 2 toppings = $25.92
+
+
