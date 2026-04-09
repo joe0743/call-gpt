@@ -2,6 +2,8 @@ require('colors');
 const EventEmitter = require('events');
 const OpenAI = require('openai');
 const tools = require('../functions/function-manifest');
+
+const fs = require('fs');
 const policy = fs.readFileSync("./policies/pizza-agent.txt", "utf8");
 
 
