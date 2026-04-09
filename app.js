@@ -59,7 +59,7 @@ app.ws('/connection', (ws) => {
         // Set RECORDING_ENABLED='true' in .env to record calls
         recordingService(ttsService, callSid).then(() => {
           console.log(`Twilio -> Starting Media Stream for ${streamSid}`.underline.red);
-          ttsService.generate({partialResponseIndex: null, partialResponse: 'Hello! Thanks for calling the pizza shop. Check the current time (Pacific Standard) and compare to business hours: 9am to 9pm.  If outside of those hours, the business is closed. End the call with a short, neutral, polite closing and terminate the session cleanly.'}, 0);
+          ttsService.generate({partialResponseIndex: null, partialResponse: 'Hello! Thanks for calling the pizza shop. Would you like to place an order for pickup or delivery?'}, 0);
         });
       } else if (msg.event === 'media') {
         transcriptionService.send(msg.media.payload);
