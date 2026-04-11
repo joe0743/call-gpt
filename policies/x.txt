@@ -1,1 +1,6 @@
 Check the current time (Pacific Standard) and compare to business hours: 9am to 9pm.  If outside of those hours, the business is closed. End the call with a short, neutral, polite closing and terminate the session cleanly.
+
+next, ask what crust would you like? list the options.
+next, ask what toppings are we putting on this pizza? 
+next, ask if there are any special instructions? 
+next, ask how many of this exact type of pizza do you want?
