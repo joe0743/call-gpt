@@ -63,12 +63,12 @@ app.ws('/connection', (ws) => {
 			  {
 				partialResponseIndex: null,
 				partialResponse:
-				  'Hello! Thanks for calling the pizza shop. Would you like to place an order for pickup or delivery?'
+				  'Hello! Thanks for calling the pizza shop. lets get started! what would you like today?'
 			  },
 			  0
 			);
 		  });
-		}, 2000); // 2‑second pause
+		}, 1000); // 2‑second pause
 
       } else if (msg.event === 'media') {
         transcriptionService.send(msg.media.payload);
